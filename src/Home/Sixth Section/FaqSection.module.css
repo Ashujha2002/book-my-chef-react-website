@@ -1,0 +1,83 @@
+.wrapper {
+  background-color: #111;
+  padding: 3rem 1rem;
+  text-align: center;
+  padding: 50px;
+  margin-top: 50px;
+}
+
+.title {
+  color: #fc7000;
+  font-size: 1.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 auto 0.5rem;
+  max-width: 30rem;
+}
+
+.decor {
+  display: block;
+  margin: 0 auto 2rem;
+  width: 6rem;    /* adjust to your decor image’s width */
+  height: auto;
+}
+
+.list {
+  list-style: none;
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.item + .item {
+  margin-top: 1rem;
+}
+
+.button {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1rem 0;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #fc7000;
+  cursor: pointer;
+}
+
+.qText {
+  color: #fff;
+  font-size: 1.1rem;
+  flex: 1;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.open .icon {
+  transform: rotate(90deg);
+}
+
+.answer {
+  color: #ccc;
+  padding: 0.5rem 0 0 0;
+  text-align: left;
+  font-size: 1rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 2rem 0.5rem;
+  }
+  .qText {
+    font-size: 1rem;
+  }
+  .answer {
+    font-size: 0.9rem;
+  }
+}

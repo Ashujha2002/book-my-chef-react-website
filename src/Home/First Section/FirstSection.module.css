@@ -1,0 +1,118 @@
+.section {
+  position: relative;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.topRight {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.bottomLeft{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 20%;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.bottomRight {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15%;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.content {
+  font-family: 'Julius Sans One', sans-serif;
+  margin-bottom: 40px;
+  
+}
+
+.content h2 {
+  font-size: 38px;
+  margin-bottom: 10px;
+  color: #FC7000;
+}
+
+.content p {
+  font-size: 20px;
+  color: aliceblue;
+  max-width: 950px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+.cards {
+  display: flex;
+  gap: 120px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  position: relative;
+  width: 250px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../assets/gold.png") ;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+.bg {
+  position: absolute;
+  top: -5%;
+  left: 5%;
+  width: 90%;
+  height: 110%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  z-index: 0;
+}
+
+.card img {
+  width: 120%;
+  height: 85%;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+.Button1{
+  margin-top: 50px;
+  padding: 12px 22px;
+  background-color: transparent;
+  color: #FC7000;
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 15px;
+  border: 1px solid #FC7000;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    margin: 10px 0;
+  }
+
+  .middle {
+    margin-top: 0;
+  }
+}

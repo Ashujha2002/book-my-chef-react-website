@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+.main{
+  width: 450px;
+  height: 350px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #151920;
+  border-radius: 25px;
+
+}
+.card{
+  width: 100%;
+  height: 100%;
+  /* padding: 20px; */
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.one{
+  width: 40%;
+  height: 100%;
+  /* background-color: black; */
+  padding: 10px 20px;
+  box-sizing: border-box;
+
+}
+
+.one img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.two{
+  width: 50%;
+  height: 100%;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  box-sizing: border-box;
+  
+  
+}
+.threeImg{
+  position: relative;
+}
+.threeImg img{
+  float: right;
+  margin-top: 0px;
+  
+}
+.two p{
+  font-size: clamp(10px, 5vw, 12px);
+  font-family: 'Roboto',sans-serif;
+  font-weight: 300;
+  line-height: 1.1rem;
+}
+
+.fourImg{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.five{
+ display: flex;
+ flex-direction: row;
+ box-sizing: border-box;
+ /* justify-content: space-around; */
+ gap: 10px;
+}
+.five img{
+  width: 20%;
+  float: left;
+}
+.two h3{
+  font-size: clamp(15px, 5vw, 22px);
+  font-family: 'Julius Sans One','Poppins','Roboto',sans-serif;
+  margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

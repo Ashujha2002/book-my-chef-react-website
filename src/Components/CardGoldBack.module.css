@@ -1,0 +1,34 @@
+.card {
+  position: relative;
+  width: 250px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../assets/gold.png") ;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.card img {
+  width: 120%;
+  height: 85%;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  /* .cards {
+    flex-direction: column;
+    align-items: center;
+  } */
+
+  .card {
+    margin: 10px 0;
+  }
+
+  /* .middle {
+    margin-top: 0;
+  } */
+}

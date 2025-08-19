@@ -1,0 +1,100 @@
+.navbarWrapper {
+  background-color: #fff;
+}
+
+.navbar {
+  padding: 12px 20px;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 30px;
+  color: #000;
+  text-decoration: none;
+}
+
+/* Toggler (hamburger menu) */
+.toggler {
+  display: none;
+  cursor: pointer;
+}
+
+.toggler span,
+.toggler span::before,
+.toggler span::after {
+  display: block;
+  background-color: #000;
+  height: 2px;
+  width: 25px;
+  border-radius: 5px;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.toggler span::before,
+.toggler span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.toggler span::before {
+  top: -7px;
+}
+
+.toggler span::after {
+  top: 7px;
+}
+
+.toggle {
+  display: none;
+}
+
+/* Navigation menu */
+.menu {
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: #000;
+  opacity: 0.6;
+  transition: 0.2s ease;
+}
+
+.link:hover,
+.link:focus,
+.link.active {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .toggler {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .toggle:checked ~ .menu {
+    display: flex;
+  }
+}
