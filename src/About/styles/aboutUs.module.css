@@ -1,0 +1,107 @@
+
+.heroContainer {
+  background-image: url("../../assets/AboutHero.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  position: relative;
+}
+
+.blackScreenForOpacity {
+  width: 100vw;
+  height: inherit;
+  background-color: black;
+  opacity: 0.6;
+  position: absolute;
+}
+
+.heroChild {
+  z-index: 100;
+}
+
+.sectionContainer {
+  position: relative;
+}
+
+.decorTopRight {
+  position: absolute;
+  right: 0;
+  top: -100px;
+}
+
+.decorBottomLeft {
+  position: absolute;
+  left: 0;
+  bottom: -100px;
+}
+
+.parentContainer {
+  padding: 50px;
+  position: relative;
+}
+
+.childContainer1 {
+  position: absolute;
+  width: 300px;
+  height: 500px;
+  margin-left: 25px;
+}
+
+.childContainer2 {
+  position: absolute;
+  width: 350px;
+  height: 450px;
+  margin-top: 25px;
+}
+
+.secondSectionContainer {
+  background-color: #151920;
+}
+
+.containerDecor {
+  position: relative;
+}
+
+.SubcontainerDecor1 {
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+}
+
+.SubcontainerDecor2 {
+  position: absolute;
+  left: 0;
+  bottom: -80px;
+}
+
+.gridItemcontainer {
+  position: relative;
+  display: none;
+}
+
+.gridSubcontainer1 {
+  position: absolute;
+}
+
+.gridSubcontainer2 {
+  margin-top: 150px;
+  z-index: 10;
+}
+
+.fifthSectionContainer{
+  background-image: url('../../assets/Rectangle 29.png');
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+@media (min-width: 768px) {
+  .heroContainer {
+    background-size: 100vw;
+    height: 80vh;
+  }
+  .gridItemcontainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

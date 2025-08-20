@@ -1,7 +1,8 @@
-import Hero from "../AboutUS/Hero Section/Hero";
-import bgImg from "../assets/Rectangle55.png";
-import ServiceCard from "../Components/ServiceCard";
+// import bgImg from "../assets/Rectangle55.png";
+// import ServiceCard from "../Components/ServiceCard";
 import First from "./FirstSection/First";
+import Hero from "./Hero/Hero";
+import img1 from "../../src/assets/Rectangle55.png";
 
 import Second from "./SecondSection/Second";
 import Third from "./ThirdSection/Third";
@@ -9,7 +10,7 @@ import Third from "./ThirdSection/Third";
 const Service = () => {
   return (
     <>
-      <Hero Heading="Our Services" imageUrl={bgImg} />
+      <Hero Heading="Services" imageUrl={img1} />
       <First />
 
       {/* <ServiceCard

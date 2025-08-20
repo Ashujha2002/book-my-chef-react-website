@@ -4,7 +4,8 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
-import { colors } from "@mui/material";
+
+import styles from "./ActionAreaCard.module.css";
 
 export default function ActionAreaCard({
   image,
@@ -14,19 +15,17 @@ export default function ActionAreaCard({
   colors,
 }) {
   return (
-    <Card
-      sx={{
-        maxWidth: 345,
-        marginTop: 10,
-        width: "100%",
-        backgroundColor: bgColor,
-      }}
-    >
+    <Card className={styles.card} style={{ backgroundColor: bgColor }}>
       <CardActionArea>
-        <CardMedia component="img" height="250" image={image} alt={title} />
-        <CardContent sx={{ color: colors }}>
+        <CardMedia
+          component="img"
+          className={styles.cardMedia}
+          image={image}
+          alt={title}
+        />
+        <CardContent className={styles.cardContent} style={{ color: colors }}>
           <Typography
-            sx={{ color: "#F70000 ", fontFamily: "Julius Sans One" }}
+            className={styles.title}
             gutterBottom
             variant="h5"
             component="div"
@@ -34,15 +33,9 @@ export default function ActionAreaCard({
             {title}
           </Typography>
           <Typography
-            sx={{
-              color: colors,
-              fontFamily: "Roboto",
-              fontSize: 15,
-              fontWeight: 500,
-              backgroundColor: bgColor,
-            }}
+            className={styles.description}
             variant="body2"
-            color="text.secondary"
+            style={{ color: colors, backgroundColor: bgColor }}
           >
             {description}
           </Typography>

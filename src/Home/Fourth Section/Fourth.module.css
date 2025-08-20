@@ -10,15 +10,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
   margin-top: 100px;
   background-color: #191818;
 }
 .first{
-  padding: 50px 200px; /*We have to adjust the padding for small screen size also.*/
+  padding: 50px 200px;
   text-align: center;
-  /* display: flex;
-  flex-direction: column; */
+  /* display: flex; */
+  /* flex-direction: column; */
   gap: 5px;
   font-family: 'Julius Sans One', 'Poppins', sans-serif;
   gap: 0px;
@@ -29,6 +28,15 @@
 
 
 }
+
+.first img{
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 .bg1{
   width: 100%;
   height: auto;
@@ -56,7 +64,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 50px 150px;
+  padding: 50px 100px;
   gap: 45px;
   background-image: url(../../assets/bg-8.png);
   background-repeat: no-repeat;
@@ -64,7 +72,7 @@
   background-size: contain;
 }
 .secondOne{
-  width: 25%;
+  width: 85%;
   height: 350px;
   padding: 20px 20px;
   /* background-color: aqua; */
@@ -93,12 +101,10 @@
 @media (max-width: 768px) {
   .second{
     flex-direction: column; /* switch to column layout */
-    padding: 50px 250px;
+    padding: 50px 20px;
     
   }
-  .secondOne{
-    width: 55%;
-  }
+  
   .first{
     padding: 20px 20px;
   }

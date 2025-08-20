@@ -15,7 +15,7 @@
 }
 
 .second{
-
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -31,6 +31,7 @@
 
 @media (max-width: 768px) {
   .second{
+    width: 80%;
     flex-direction: column;
     gap: 50px;
     margin-top: 30px;

@@ -9,7 +9,7 @@ import slide2 from "../../assets/28.jpeg";
 import deco from "../../assets/deco.png";
 import deco2 from "../../assets/deco2.png";
 
-// Video path (change to your uploaded Hostinger URL)
+// Video path
 const videoSrc =
   "https://rdunimaxpharma.com/Videos/3195369-hd_1280_720_25fps.mp4";
 
@@ -18,7 +18,7 @@ function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [videoError, setVideoError] = useState(false);
 
-  // Image slideshow if video not loaded
+  // Slideshow fallback if video not loaded
   useEffect(() => {
     if (videoError) {
       const interval = setInterval(() => {
@@ -27,6 +27,21 @@ function HeroSection() {
       return () => clearInterval(interval);
     }
   }, [slides.length, videoError]);
+
+  // Responsive switch (video on desktop, slideshow on mobile)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setVideoError(true); // force slideshow on small screens
+      } else {
+        setVideoError(false); // allow video on larger screens
+      }
+    };
+
+    handleResize(); // run once on mount
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className={styles.hero}>
@@ -45,7 +60,7 @@ function HeroSection() {
         </video>
       )}
 
-      {/* Fallback slideshow if video fails */}
+      {/* Fallback slideshow */}
       {videoError &&
         slides.map((src, index) => (
           <img
@@ -57,6 +72,9 @@ function HeroSection() {
             }`}
           />
         ))}
+
+      {/* 🔹 Overlay background (applies to both video & slideshow) */}
+      <div className={styles.overlayBackground}></div>
 
       {/* Overlay text & button */}
       <div className={styles.overlay}>

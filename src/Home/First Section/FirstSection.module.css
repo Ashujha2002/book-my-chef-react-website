@@ -34,6 +34,10 @@
 .content {
   font-family: 'Julius Sans One', sans-serif;
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   
 }
 
@@ -50,7 +54,9 @@
   margin: 0 auto;
   font-family: 'Roboto', sans-serif;
 }
-
+.content img{
+  
+}
 .cards {
   display: flex;
   gap: 120px;
