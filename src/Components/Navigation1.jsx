@@ -7,7 +7,7 @@ const routes = [
   { name: "Service", href: "/service" },
   { name: "Blog", href: "/blog" },
   { name: "Contact Us", href: "/contact" },
-  { name: "Testimonials", href: "/testimonials" },
+  { name: "Book Chef", href: "/book-chef" },
 ];
 
 const Navigation1 = () => {

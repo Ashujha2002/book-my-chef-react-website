@@ -1,12 +1,12 @@
 :root {
-  --bg: #0f172a;         /* section background (very dark blue/gray) */
+  --bg: #0F0F0F;         /* section background (very dark blue/gray) */
   --text: #e5e7eb;       /* light text */
   --muted: #94a3b8;      /* paragraph text */
-  --panel: #1e293b;      /* card background */
+  --panel: #151920;      /* card background */
   --field: #0b1220;      /* input background */
   --stroke: #334155;     /* borders */
-  --primary: #3b82f6;    /* blue button / accents */
-  --primary-strong: #3056d3;
+  --primary: #FC7000;    /* blue button / accents */
+  --primary-strong: #FC7000;
   --green: #13c296;      /* dotted accents */
   --shadow: 0 20px 40px rgba(2, 6, 23, 0.45);
 }
@@ -46,15 +46,16 @@
 .title {
   color: #f8fafc;
   font-weight: 800;
-  font-size: 40px;
+  font-family: 'Julius Sans One';
+  font-size: clamp(20px, 5vw, 35px);
   letter-spacing: 0.5px;
   margin: 0 0 18px;
 }
-
+.lead{
+  font-family: 'Roboto',sans-serif;
+}
 @media (min-width: 640px) {
-  .title {
-    font-size: 48px;
-  }
+
 }
 
 .lead {
@@ -180,7 +181,7 @@
 }
 
 .submitBtn:hover {
-  background: #2563eb;
+  background: #ff7f16;
 }
 
 /* MAP */

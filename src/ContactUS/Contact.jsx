@@ -231,7 +231,7 @@ ${data.details}`;
                   fillRule="evenodd"
                   clipRule="evenodd"
                   d="M0 100C0 44.7715 0 0 0 0C55.2285 0 100 44.7715 100 100C100 100 100 100 0 100Z"
-                  fill="#3056D3"
+                  fill="#FC7000"
                 />
               </svg>
             </span>
@@ -244,7 +244,7 @@ ${data.details}`;
                     cx="32"
                     cy={132 - i * 14.667}
                     r="1.6667"
-                    fill="#13C296"
+                    fill="#FC7000"
                   />
                 ))}
                 {Array.from({ length: 10 }).map((_, i) => (
@@ -253,7 +253,7 @@ ${data.details}`;
                     cx="17.3333"
                     cy={132 - i * 14.667}
                     r="1.6667"
-                    fill="#13C296"
+                    fill="#FC7000"
                   />
                 ))}
                 {Array.from({ length: 10 }).map((_, i) => (
@@ -262,7 +262,7 @@ ${data.details}`;
                     cx="2.6667"
                     cy={132 - i * 14.667}
                     r="1.6667"
-                    fill="#13C296"
+                    fill="#FC7000"
                   />
                 ))}
               </svg>
@@ -280,7 +280,7 @@ ${data.details}`;
                       cy={132 - i * 14.667}
                       r="1.6667"
                       transform={`rotate(180 ${cx} ${132 - i * 14.667})`}
-                      fill="#13C296"
+                      fill="#FC7000"
                     />
                   ))
                 )}
@@ -327,7 +327,7 @@ ${data.details}`;
 
               <div aria-live="polite" style={{ marginTop: 10 }}>
                 {status === "success" && (
-                  <span style={{ color: "#22c55e" }}>{message}</span>
+                  <span style={{ color: "#FC7000" }}>{message}</span>
                 )}
                 {status === "error" && (
                   <span style={{ color: "#f87171" }}>{message}</span>

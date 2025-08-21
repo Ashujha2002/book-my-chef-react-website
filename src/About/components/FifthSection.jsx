@@ -28,7 +28,7 @@ function FifthSection() {
   ];
   return (
     <div
-      className={`${styles.fifthSectionContainer} py-50 px-5 flex space-x-5 justify-center`}
+      className={`${styles.fifthSectionContainer} py-50 py-10 md:py-20 px-5 flex space-x-5 justify-center flex-wrap gap-y-6`}
     >
       {dataArr.map((val, index) => (
         <ReviewCard

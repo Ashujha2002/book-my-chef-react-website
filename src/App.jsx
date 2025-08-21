@@ -9,6 +9,10 @@ import Aboutus from "./About/Aboutus";
 import BlogPage from "./Blog/Blog";
 import BlogPost from "./Blog/BlogPost";
 import Contact from "./ContactUS/Contact";
+import Bookchef from "./BookChef/Bookchef";
+import Occasion from "./BookChef/components/Occasion";
+import Location from "./BookChef/components/Location";
+import Place from "./BookChef/components/Place";
 
 function App() {
   return (
@@ -23,6 +27,10 @@ function App() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/book-chef" element={<Bookchef />} />
+        <Route path="/occasion" element={<Occasion />} />
+        <Route path="/location" element={<Location />} />
+        <Route path="/place" element={<Place />} />
       </Routes>
     </Router>
   );

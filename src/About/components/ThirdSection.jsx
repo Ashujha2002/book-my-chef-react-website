@@ -1,8 +1,8 @@
-import ImgLeftSubContainer from "../../assets/01_gallery-3.jpg (1).png";
-import ImgRightSubContainer from "../../assets/Picsart_25-05-30_23-20-06-898.png";
-import Imgdecor from "../../assets/preview2.png";
-import containerDecor1 from "../../assets/bg-13 1.png";
-import containerDecor2 from "../../assets/bg-14 1.png";
+import ImgLeftSubContainer from "../../assets/01gallery.png";
+import ImgRightSubContainer from "../../assets/Picsart.png";
+import Imgdecor from "../../assets/image.png";
+import containerDecor1 from "../../assets/bg-131.png";
+import containerDecor2 from "../../assets/bg-141.png";
 import styles from "../styles/aboutUs.module.css";
 import { useState, useEffect } from "react";
 
@@ -44,10 +44,12 @@ function ThirdSection() {
   ];
 
   const ContentBlock = ({ title, decor, heading, text, btnText }) => (
-    <div className="w-1/2 py-2 md:py-15 flex flex-col items-center">
-      <p className="titleFont text-lg md:text-xl text-orange-500">{title}</p>
-      <img src={decor} />
-      <p className="titleFont text-xl text-center md:text-3xl my-5">
+    <div className="w-1/2 w-full md:w-1/2 py-2 md:py-15 flex flex-col items-center px-4 text-center">
+      <p className="titleFont text-base sm:text-lg md:text-xl text-orange-500">
+        {title}
+      </p>
+      <img className="w-16 sm:w-20 md:w-28" src={decor} />
+      <p className="titleFont text-lg sm:text-xl text-center md:text-3xl my-5">
         {heading}
       </p>
       <p className="w-9/10 text-center my-5">
@@ -58,7 +60,7 @@ function ThirdSection() {
               .join(" ") + "..."
           : text}
       </p>
-      <button className="border border-orange-500 p-2 mt-10 cursor-pointer text-orange-500">
+      <button className="border border-orange-500 p-2 mt-6 md:mt-10 cursor-pointer text-orange-500">
         {btnText}
       </button>
     </div>
@@ -68,18 +70,23 @@ function ThirdSection() {
       {dataArr.map((item, index) => (
         <div
           key={index}
-          className={`flex ${index !== 0 ? "flex-row-reverse" : ""}`}
+          className={`flex flex-col md:flex-row ${
+            index !== 0 ? "md:flex-row-reverse" : ""
+          }`}
         >
-          <div className="w-1/2">
-            <img className="h-full" src={item.img} />
+          <div className="w-1/2 w-full md:w-1/2">
+            <img
+              className="h-full w-full object-cover min-h-[260px]"
+              src={item.img}
+            />
           </div>
           <ContentBlock {...item} />
         </div>
       ))}
-      <div className={styles.SubcontainerDecor1}>
+      <div className={`${styles.SubcontainerDecor1} hidden sm:block`}>
         <img src={containerDecor1} />
       </div>
-      <div className={styles.SubcontainerDecor2}>
+      <div className={`${styles.SubcontainerDecor2} hidden sm:block`}>
         <img src={containerDecor2} />
       </div>
     </div>
