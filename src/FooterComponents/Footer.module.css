@@ -1,0 +1,170 @@
+.footer {
+  position: relative;
+  z-index: 10;
+  background: #191818;
+  padding: 120px 0 80px;
+  margin-top: 50px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -16px;
+}
+
+.col {
+  padding: 16px;
+  width: 100%;
+}
+
+.col2 {
+  width: 50%;
+}
+
+.col3 {
+  width: 100%;
+}
+
+.box {
+  margin-bottom: 40px;
+}
+
+.logo img {
+  max-width: 160px;
+}
+
+.logoLight {
+  display: block;
+}
+
+.logoDark {
+  display: none;
+}
+
+.text {
+  margin: 28px 0;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.6;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #FC7000;
+  font-size: 14px;
+}
+
+.phoneIcon {
+  margin-right: 8px;
+  color: #FC7000;
+}
+
+.heading {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navLink {
+  display: inline-block;
+  font-size: 16px;
+  color: #ffffffb9;
+  margin-bottom: 12px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: #FC7000;
+}
+
+.social {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.social a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  border: 1px solid #FC7000;
+  border-radius: 50%;
+  font-size: 14px;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.social a:hover {
+  background: #FC7000;
+  color: #fff;
+  border-color: #3056d3;
+}
+
+.copy {
+  font-size: 14px;
+  color: #ffffffb9;
+}
+
+/* Background shapes */
+.shape1,
+.shape2 {
+  position: absolute;
+  z-index: -1;
+}
+
+.shape1 {
+  bottom: 0;
+  left: 0;
+  width: 217px;
+  height: 229px;
+  background: radial-gradient(circle, rgba(252, 112, 0, 0.08) 0%, transparent 100%);
+}
+
+.shape2 {
+  right: 40px;
+  top: 40px;
+  width: 75px;
+  height: 75px;
+  background: radial-gradient(circle, rgba(252, 112, 0, 0.31) 0%, transparent 100%);
+  border-radius: 50%;
+}
+
+
+/* Responsive */
+@media (min-width: 640px) {
+  .col2 {
+    width: 50%;
+  }
+
+  .col3 {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .col2 {
+    width: 16.66%;
+  }
+
+  .col3 {
+    width: 25%;
+  }
+}

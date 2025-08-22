@@ -51,7 +51,7 @@ function ServicesSelect() {
           item.state &&
           addUserInputData({
             id: "service-select",
-            text:
+            data:
               item.id === "service-opt-1"
                 ? "Single Services"
                 : "Multiple Services",

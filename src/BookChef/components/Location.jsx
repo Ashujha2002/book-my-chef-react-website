@@ -72,7 +72,7 @@ function Location() {
     if (userLocation.addr.length > 3) {
       addUserInputData({
         id: "location",
-        text: userLocation.addr,
+        data: userLocation.addr,
       });
       return true;
     } else {

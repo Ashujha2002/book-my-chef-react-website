@@ -40,10 +40,20 @@ function Occasion() {
   };
 
   useEffect(() => {
-    if (userInputData[0]?.id === "service-select") {
-      setServiceType(userInputData[0].text);
+    const serviceData = userInputData.find(
+      (item) => item.id === "service-select"
+    );
+    if (serviceData) {
+      setServiceType(serviceData.data);
+
+      setOccasionState((prev) =>
+        prev.map((service) => ({
+          ...service,
+          options: service.options.map((opt) => ({ ...opt, isActiv: false })),
+        }))
+      );
     }
-  }, []);
+  }, [userInputData]);
 
   function handleOccasionClick(id, occasionIndex) {
     setOccasionState((prev) =>
@@ -68,7 +78,7 @@ function Occasion() {
         (occasion) => occasion.isActiv === true
       );
       if (userSelectedData) {
-        addUserInputData({ id: "occasion", text: userSelectedData?.text });
+        addUserInputData({ id: "occasion", data: userSelectedData?.text });
         return true;
       } else {
         toast("Select an occasion!");

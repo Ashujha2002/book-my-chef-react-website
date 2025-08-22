@@ -66,16 +66,15 @@ function Place() {
     );
   }
 
-  function handlePlaceClick() {
-    const userPlaceInput = OptionPlace.find((place) => place.setActiv);
-    if (userPlaceInput) {
-      addUserInputData({ id: "place", text: userPlaceInput?.title });
+  function onNextBtnClick() {
+    const userPlaceInput = userInputData.find((place) => place.setActiv);
+    if (!userPlaceInput) {
+      addUserInputData({ id: "place", data: userPlaceInput?.title });
       return true;
     } else {
       toast("Select a Place!");
       return false;
     }
-    console.log(userInputData);
   }
 
   return (
@@ -111,7 +110,7 @@ function Place() {
           bgColor="bg-green-500"
           hoverColor="hover:bg-green-400"
           navigateTo="/date"
-          handleBtnClick={handlePlaceClick}
+          handleBtnClick={onNextBtnClick}
           navigationDisabled={false}
         >
           Next

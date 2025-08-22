@@ -27,18 +27,18 @@ function ThirdSection() {
   const dataArr = [
     {
       img: ImgLeftSubContainer,
-      title: "35 years of experience",
+      title: "5+ years of experience",
       decor: Imgdecor,
-      heading: "Award winning chef",
-      text: "Lorem Ipsum is simply dummy text of the printingand typesetting industry lorem Ipsum has been the industrys standard dummy text ever since the when an unknown printer took a gallery of type.",
+      heading: "A Team of Award-Winning Chefs",
+      text: "Our chefs come from rich culinary backgrounds, many of them trained in India’s top hospitality schools and some with international exposure. From Michelin-inspired plating to authentic regional cooking, our team represents a wide spectrum of skills. Whether it is Mughlai, South Indian, Bengali, or modern fusion, our chefs bring creativity and passion to the plate. Over the years, we have been part of thousands of birthdays, anniversaries, weddings, and even intimate puja gatherings, making every occasion truly special.",
       btnText: "Meet Our Team",
     },
     {
       img: ImgRightSubContainer,
-      title: "35 years of experience",
+      title: "Custom Menus for Every Occasion",
       decor: Imgdecor,
-      heading: "Dinner, Event or Party?",
-      text: "Lorem Ipsum is simply dummy text of the printingand typesetting industry lorem Ipsum has been the industrys standard dummy text ever since the when an unknown printer took a gallery of type.",
+      heading: "Dinner, Wedding or Corporate Party?",
+      text: "We know every occasion demands something different — a wedding feast cannot be the same as a cozy dinner for two. That’s why our chefs collaborate with you to design menus based on your preferences, dietary requirements, and cultural traditions. Be it a lavish buffet for 500 guests or an elegant five-course meal for your anniversary, we ensure the same standard of excellence. Our services include live cooking counters, personalized menu planning, and even theme-based dining experiences tailored for Indian celebrations.",
       btnText: "Meet Our Team",
     },
   ];

@@ -9,24 +9,33 @@ import ImgdecorBottomLeft from "../../assets/Frame 1.png";
 function FirstSection({ className }) {
   const heading = <p>WHO WE ARE</p>;
   const titleParagraph = (
-    <p className="text-base md:text-lg">
-      A modern restaurant with a menu that will make your mouth water. Servicing
-      delicious food <span className="text-orange-500">since 45 years</span>.
-      Enjoy our seasonal menu and experience the beauty of naturalness
+    <p className="text-base md:text-lg para">
+      We are a collective of culinary experts, food enthusiasts, and
+      professional chefs with one vision — to bring authentic, homely, and
+      unforgettable dining experiences right to your doorstep. Our journey began
+      with a simple idea: that hiring a chef in India should be as easy as
+      <span className="text-orange-500"> Over the years</span>. we have served
+      countless families, hosted large weddings, designed curated corporate
+      menus, and partnered with some of the best kitchens in the country. From
+      traditional Indian thalis to international gourmet platters, our chefs
+      blend authenticity with innovation, ensuring that every meal feels like a
+      story told through taste.
     </p>
   );
   const cardContactAndTimeData = [
     {
       type: "Lunch Time",
-      data: ["Monday To Sunday", "11.00am - 2.30pm"],
+      data: ["Monday To Sunday", "11.00 AM - 3.00 PM"],
     },
     {
       type: "Dinner Time",
-      data: ["Monday To Sunday", "11.00am - 2.30pm"],
+      data: ["Monday To Sunday", "6.30 PM - 11.00 PM"],
     },
     {
       type: "Contact Us",
-      data: ["Restaurant St, Delicious City, London 9578, UK"],
+      data: [
+        "B-99, 5th Floor, Phase-I Panchsheel Park Malviya Nagar, Near Triveni Complex New Delhi - 110017",
+      ],
     },
   ];
   return (
@@ -54,14 +63,23 @@ function FirstSection({ className }) {
       <div className="px-4 sm:px-8 md:px-12 pt-10 md:pt-24 grid gap-6 md:grid-cols-3">
         <div className="item1 flex flex-col items-center space-y-4 md:block">
           <div>
-            <p className="text-sm md:text-base">
-              Lorem Ipsum is simply dummy text of the printingand typesetting
-              industry lorem Ipsum has been the industrys standard dummy text
-              ever since the when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book It has survived.
+            <p className="text-sm md:text-base para">
+              What sets us apart is our attention to detail — not just in
+              cooking but in the entire dining experience. Each chef we onboard
+              undergoes rigorous training, background verification, and skill
+              assessments. This means when you book a chef with us, you’re not
+              only choosing convenience but also trust, professionalism, and
+              quality. Our services extend from small family gatherings to
+              high-end events, making sure your guests always remember the food
+              and hospitality. After all, food in India is not just nourishment
+              — it’s culture, emotion, and celebration.
             </p>
           </div>
-          <img className="w-full md:w-auto rounded-lg" src={Imgdecor1} />
+          <img
+            className="w-full md:w-auto rounded-lg"
+            style={{ marginTop: "80px" }}
+            src={Imgdecor1}
+          />
         </div>
         <div className="item2 hidden md:block">
           <img className="rounded-lg" src={Imgdecor2} />

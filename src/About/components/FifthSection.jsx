@@ -5,22 +5,22 @@ import ReviewCard from "./reviewCard";
 function FifthSection() {
   const dataArr = [
     {
-      rating: 4,
-      text: "Lorem Ipsum is simply dummy printing and typeset industry lorem Ipsum has been.Lorem Ipsum is simply dummy printing and typeset industry lorem Ipsum has been.",
-      name: "willian joe",
-      city: "new york",
+      rating: 5,
+      text: "We booked a private chef for our daughter’s birthday in Delhi, and the food was absolutely fantastic! From starters to dessert, everything was fresh and beautifully served. Our guests still talk about the biryani and kebabs.",
+      name: "Anjali Mehta",
+      city: "New Delhi",
       img: CardImg,
     },
     {
       rating: 5,
-      text: "Lorem Ipsum is simply dummy printing and typeset industry lorem Ipsum has been.Lorem Ipsum is simply dummy printing and typeset industry lorem Ipsum has been.",
-      name: "willian joe",
-      city: "new york",
+      text: "I hired a chef for a family get-together in Bangalore. The chef not only cooked authentic South Indian dishes but also explained the recipes and traditions behind them. It was both delicious and memorable.",
+      name: "Ramesh Iyer",
+      city: "Bangalore",
       img: CardImg,
     },
     {
       rating: 3,
-      text: "Lorem Ipsum is simply dummy printing and typeset industry lorem Ipsum has been.Lorem Ipsum is simply dummy printing and typeset industry lorem Ipsum has been.",
+      text: "Our office Diwali party in Mumbai was catered by this team, and it exceeded expectations. The live counters, chatpata chaats, and festive sweets were a big hit with everyone. Excellent service and hygiene too.",
       name: "willian joe",
       city: "new york",
       img: CardImg,

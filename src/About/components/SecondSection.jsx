@@ -3,20 +3,20 @@ import styles from "../styles/aboutUs.module.css";
 function SecondSection() {
   const arr = [
     {
-      num: 150,
-      str: "Daily Order",
+      num: 500,
+      str: "Daily Order Served",
     },
     {
       num: 150,
-      str: "Daily Order",
+      str: "Happy Families Across India",
+    },
+    {
+      num: 15,
+      str: "Cities Covered",
     },
     {
       num: 150,
-      str: "Daily Order",
-    },
-    {
-      num: 150,
-      str: "Daily Order",
+      str: "Professional Chefs Onboarded",
     },
   ];
   return (

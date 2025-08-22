@@ -1,0 +1,68 @@
+/* Wrapper */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #f6f9fc;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  z-index: 1000;
+  transition: transform 0.4s ease-in-out;
+}
+.hide {
+  transform: translateY(-100%);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+}
+
+/* Logo */
+.logo img {
+  height: 80px;
+  width: auto;
+  display: block;
+}
+
+/* Nav Links */
+.nav {
+  display: flex;
+  gap: 40px;
+}
+.navLink {
+  text-decoration: none;
+  font-weight: 600;
+  color: #000;
+  transition: color 0.25s ease;
+}
+.navLink:hover {
+  color: #ff6600; /* orange hover like in image */
+}
+
+/* Book Chef Button */
+.button {
+  padding: 10px 20px;
+  border: 2px solid #ff6600;
+  color: #ff6600;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.button:hover {
+  background: #ff6600;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav {
+    display: none; /* hide links on small screen */
+  }
+}

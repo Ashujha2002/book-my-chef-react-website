@@ -9,31 +9,31 @@ import styles from "../styles/aboutUs.module.css";
 
 const FourthSection = () => {
   const sectionTitle = "Our services";
-  const sectionHeading = "Exquisite Restaurant in City";
+  const sectionHeading = "Redefining Dining Experiences in India";
   const dataArr = [
     {
       id: 1,
       iconImg: IconImg1,
-      title: "Outdoor Catering",
-      text: "Lorem Ipsum is simply dummy printing and typeset industry lorem Ipsum has been.",
+      title: "Private Chef at Home",
+      text: "Skip the hassle of restaurants and enjoy gourmet dining in your own living room. Our private chefs handle everything — from planning the menu, sourcing fresh ingredients, cooking at your home, serving your family or guests, and even cleaning up afterward. Perfect for anniversaries, small family gatherings, or when you just want to pamper yourself.",
     },
     {
       id: 2,
       iconImg: IconImg2,
-      title: "Outdoor Catering",
-      text: "Lorem Ipsum is simply dummy printing and typeset industry lorem Ipsum has been.",
+      title: "Wedding & Event Catering",
+      text: "Big fat Indian weddings deserve equally grand food. We specialize in creating diverse menus that represent the richness of Indian traditions. From live dosa counters to Mughlai buffets, from chaat corners to exotic desserts, our team ensures every guest leaves satisfied. Whether your event hosts 50 or 5000, we scale seamlessly.",
     },
     {
       id: 3,
       iconImg: IconImg3,
-      title: "Outdoor Catering",
-      text: "Lorem Ipsum is simply dummy printing and typeset industry lorem Ipsum has been.",
+      title: "Corporate Dining Solutions",
+      text: "Food plays a key role in building lasting impressions at work. From boardroom lunches to festive office parties, our chefs create professional, high-quality meals designed to delight. Companies across India trust us for punctual service, customizable packages, and an unmatched dining experience.",
     },
     {
       id: 4,
       iconImg: IconImg4,
-      title: "Outdoor Catering",
-      text: "Lorem Ipsum is simply dummy printing and typeset industry lorem Ipsum has been.",
+      title: "Outdoor & Festive Catering",
+      text: "Turn your terrace, lawn, or farmhouse into a mini food festival. We provide live barbeque stations, festive tandoors, chaats, and even regional street food experiences. Perfect for Diwali parties, birthday bashes, or casual weekend get-togethers with friends and family.",
     },
   ];
   return (

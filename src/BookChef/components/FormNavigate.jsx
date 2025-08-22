@@ -19,7 +19,9 @@ function FormNavigate({
   return (
     <button
       disabled={navigationDisabled}
-      className={`${bgColor} ${navigationDisabled?'cursor-not-allowed':'cursor-pointer'} ${hoverColor} w-40 rounded-md px-4 py-2`}
+      className={`${bgColor} ${
+        navigationDisabled ? "cursor-not-allowed" : "cursor-pointer"
+      } ${hoverColor} w-40 rounded-md px-4 py-2`}
       onClick={handleNavigationClick}
     >
       {children}
