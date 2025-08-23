@@ -14,9 +14,9 @@ const Fourth = () => {
           <img src={deco} alt="Decoration Images" />
           <h3 className={style.headTwo}>Add On Services</h3>
           <p>
-            We provide additional services that enhance your experience and
-            ensure a hassle-free and relaxed environment. These services can be
-            easily added to your order during the check-out process.
+            To make your event completely stress-free, we offer additional
+            support services that ensure everything runs smoothly. Add these to
+            your booking at checkout for a truly seamless experience.
           </p>
         </div>
         <div className={style.second}>
@@ -27,8 +27,8 @@ const Fourth = () => {
             <img src={barTenders} alt="" />
             <h3 className={style.headMain}>Bartenders</h3>
             <p>
-              Handpicked chefs, right in your kitchen. Perfect for cozy
-              gatherings, date nights, or family celebrations.
+              Professional bartenders serving premium cocktails and refreshing
+              mocktails to keep the party alive.
             </p>
           </div>
           <div
@@ -38,8 +38,8 @@ const Fourth = () => {
             <img src={wait} alt="" />
             <h3 className={style.headMain}>Waiters</h3>
             <p>
-              Delicious menus and seamless service for all event sizes — from
-              birthdays to weddings.
+              Experienced waitstaff to ensure your guests are served with warmth
+              and efficiency throughout the event.
             </p>
           </div>
           <div
@@ -49,8 +49,8 @@ const Fourth = () => {
             <img src={clean} alt="" />
             <h3 className={style.headMain}>cleaners</h3>
             <p>
-              Elevate your evenings with interactive fine dining prepared live
-              by culinary masters.
+              Our trained cleaning staff ensures your space is spotless after
+              the celebration, so you can relax and enjoy.
             </p>
           </div>
           {/* <img src= alt="" /> */}

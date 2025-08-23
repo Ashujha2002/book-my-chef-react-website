@@ -1,34 +1,79 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* card */
 .card {
   position: relative;
-  width: 250px;
-  height: 300px;
+  width: 100%;                  /* take full width of parent */
+  max-width: 300px;             /* don’t get too large */
+  aspect-ratio: 3 / 4;          /* keeps card shape instead of fixed height */
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../assets/gold.png") ;
+  background-image: url("../assets/gold.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: visible;
 }
-.card img {
-  width: 120%;
-  height: 85%;
+
+/* overlay */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 0;
+}
+
+/* ensure content is above overlay */
+.card > * {
   position: relative;
-  object-fit: cover;
   z-index: 1;
 }
 
-@media (max-width: 768px) {
-  /* .cards {
-    flex-direction: column;
-    align-items: center;
-  } */
+.card img {
+  width: 120%;
+  height: 85%;
+  object-fit: cover;
+}
 
-  .card {
-    margin: 10px 0;
-  }
+/* title text */
+.caption {
+  margin-top: 1.5rem;
+  font-size: clamp(35px, 3vw, 55px); /* scales with screen */
+  font-family: 'Julius Sans One', sans-serif;
+  font-weight: 600;
+  color: #fff;
+  z-index: 1;
+}
 
-  /* .middle {
-    margin-top: 0;
-  } */
+/* double underline */
+.doubleLine {
+  width: clamp(60px, 20vw, 120px);  /* responsive width */
+  height: 6px;
+  margin-top: 6px;
+  position: relative;
+}
+
+.doubleLine::before,
+.doubleLine::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #fc7000, #ff9b42);
+  border-radius: 2px;
+}
+
+.doubleLine::before {
+  top: 0;
+}
+.doubleLine::after {
+  bottom: 0;
 }

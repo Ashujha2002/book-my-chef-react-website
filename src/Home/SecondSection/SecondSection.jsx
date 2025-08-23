@@ -20,28 +20,28 @@ const SecondSection = () => {
         <ActionAreaCard
           image={img1}
           title="Private chefs"
-          description="Handpicked chefs, right in your kitchen. Perfect for cozy gatherings, date nights, or family celebrations."
+          description="Handpicked chefs who bring restaurant-quality dining to your kitchen. Perfect for intimate gatherings, anniversaries, or cozy get-togethers."
           bgColor="#0F0F0F"
           colors="#FFFFFF"
         />
         <ActionAreaCard
           image={img2}
           title="Catering services"
-          description="Delicious menus and seamless service for all event sizes — from birthdays to weddings."
+          description="Seamless catering solutions for weddings, corporate events, birthdays, and festivals—crafted with precision and warmth."
           bgColor="#151920"
           colors="#FFFFFF"
         />
         <ActionAreaCard
           image={img3}
           title="Chef’s table"
-          description="Elevate your evenings with interactive fine dining prepared live by culinary masters."
+          description="An exclusive fine-dining experience where you watch our culinary masters create exquisite dishes right in front of you."
           bgColor="#0F0F0F"
           colors="#FFFFFF"
         />
         <ActionAreaCard
           image={img4}
           title="Bartender"
-          description="Shake things up with premium cocktails served by expert bartenders for your event."
+          description="From classic cocktails to refreshing mocktails, our bartenders ensure your guests enjoy every sip at your celebration."
           bgColor="#151920"
           colors="#FFFFFF"
         />

@@ -36,9 +36,7 @@
   font-weight: 300;
 }
 
-.test{
-  margin-top: 5000px;
-}
+
 @media (max-width: 768px) {
   .one{
     width: auto;

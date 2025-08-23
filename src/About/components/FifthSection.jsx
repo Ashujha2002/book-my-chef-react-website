@@ -21,8 +21,8 @@ function FifthSection() {
     {
       rating: 3,
       text: "Our office Diwali party in Mumbai was catered by this team, and it exceeded expectations. The live counters, chatpata chaats, and festive sweets were a big hit with everyone. Excellent service and hygiene too.",
-      name: "willian joe",
-      city: "new york",
+      name: "Neha Kapoor",
+      city: "Mumbai",
       img: CardImg,
     },
   ];

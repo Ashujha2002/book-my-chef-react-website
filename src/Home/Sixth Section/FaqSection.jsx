@@ -8,27 +8,27 @@ import IconMinus from "../../assets/minus.png"; // rotated arrow (optional)
 
 const FAQ_DATA = [
   {
-    question: "What is the booking procedure for caterers?",
+    question: "What cuisines do your chefs specialize in?",
     answer:
-      "To book a caterer, you choose your cuisine type, select date & time, then confirm payment. Our system connects you with a vetted chef for your event.",
+      "From North Indian, South Indian, Bengali, and Gujarati to Continental, Chinese, and Italian, our chefs can prepare a wide variety of cuisines.",
   },
   {
-    question: "What types of events can BookMyChef cater to?",
+    question: "Can I book chefs for festivals like Diwali or Holi?",
     answer:
-      "We cater to weddings, corporate events, private parties, and any gathering where you need professional chefs on-site.",
+      "Absolutely! We specialize in festive catering and ensure menus reflect traditional flavors with a modern twist.",
   },
   {
-    question: "Can you also provide a bartender and servers?",
+    question: "Are your chefs available across India?",
     answer:
-      "Yes—just select additional staffing when booking, and we’ll include bartenders or servers as needed.",
+      "Yes, Book My Chef services are available in major cities like Delhi, Mumbai, Bengaluru, Hyderabad, Jaipur, and expanding rapidly.",
   },
   {
-    question: "Are your chefs and other partners vetted for quality?",
+    question: "Can I book a chef for just a small gathering?",
     answer:
-      "Absolutely—each chef and partner passes our rigorous quality checks before joining the platform.",
+      "Of course. Whether it’s a dinner for two, a birthday for 10, or a wedding for 500+, we’ve got you covered.",
   },
   {
-    question: "How can I hire a chef through BookMyChef?",
+    question: "How can I hire a chef through Chef Choice Menu?",
     answer:
       "Simply create an account, browse available chefs, choose your date, and book directly through our site.",
   },

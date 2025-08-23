@@ -34,11 +34,12 @@ const First = () => {
             <h2>Dine Differently: Private Chefs at Your Service</h2>
             <img src={imag2} alt="" />
             <p>
-              At Book My Chef, we bring exceptional culinary experiences right
-              to your doorstep. Whether you're hosting a small dinner party,
-              planning a corporate event, or craving a private fine-dining
-              evening, our team of professional chefs and hospitality experts is
-              here to serve unforgettable moments through food and service.
+              At Chef Choice Menu, we bring exceptional culinary experiences
+              right to your doorstep. Whether you're hosting a small dinner
+              party, planning a corporate event, or craving a private
+              fine-dining evening, our team of professional chefs and
+              hospitality experts is here to serve unforgettable moments through
+              food and service.
             </p>
           </div>
         </div>

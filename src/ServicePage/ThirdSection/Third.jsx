@@ -15,9 +15,9 @@ const Third = () => {
         </div>
       </div>
 
-      <div className={style.test}>
+      {/* <div className={style.test}>
         <h1>Hello world</h1>
-      </div>
+      </div> */}
     </>
   );
 };

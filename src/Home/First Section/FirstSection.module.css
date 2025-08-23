@@ -2,6 +2,7 @@
   position: relative;
   padding: 40px 20px;
   text-align: center;
+  background-color:#232B2B;
 }
 
 .topRight {
@@ -62,6 +63,8 @@
   gap: 120px;
   justify-content: center;
   flex-wrap: wrap;
+  overflow: visible;
+  z-index: -1;
 }
 
 .card {

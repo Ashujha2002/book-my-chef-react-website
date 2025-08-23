@@ -43,16 +43,8 @@ function ContactTextArea({ name, placeholder, value, onChange }) {
   );
 }
 
-// Try to read a Formspree ID from common env names (works with Vite/CRA/Next):
-const FORMSPREE_ID =
-  (typeof import.meta !== "undefined" &&
-    import.meta.env &&
-    import.meta.env.VITE_FORMSPREE_ID) ||
-  (typeof process !== "undefined" &&
-    process.env &&
-    (process.env.NEXT_PUBLIC_FORMSPREE_ID ||
-      process.env.REACT_APP_FORMSPREE_ID)) ||
-  ""; // leave empty to use mailto fallback
+// ✅ Hardcode your Formspree ID so the form "just works"
+const FORMSPREE_ID = "xldlywdl";
 
 export default function Contact() {
   const [data, setData] = useState({
@@ -91,41 +83,21 @@ export default function Contact() {
     setMessage("");
 
     try {
-      if (FORMSPREE_ID) {
-        // Real submission to Formspree when ID is provided
-        await submitToFormspree({
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          message: data.details,
-        });
-        setStatus("success");
-        setMessage("Thanks! Your message has been sent.");
-        setData({ name: "", email: "", phone: "", details: "" });
-      } else {
-        // Zero-config fallback: open user’s mail client
-        const to = "info@yourdomain.com"; // adjust if you want
-        const subject = `New Contact from ${data.name}`;
-        const body = `Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone}
-
-Message:
-${data.details}`;
-        window.location.href = `mailto:${encodeURIComponent(
-          to
-        )}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-          body
-        )}`;
-
-        setStatus("success");
-        setMessage("Opening your email client to send the message…");
-      }
+      await submitToFormspree({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        message: data.details, // Formspree "message" field
+      });
+      setStatus("success");
+      setMessage("Thanks! Your message has been sent.");
+      setData({ name: "", email: "", phone: "", details: "" });
+      navigate("/thanks");
     } catch (err) {
       setStatus("error");
       setMessage(err.message || "Something went wrong. Please try again.");
     } finally {
-      // Re-enable button regardless
+      // keep your original behavior
       setTimeout(() => {
         if (status === "success") return;
         setStatus("idle");
@@ -327,7 +299,7 @@ ${data.details}`;
 
               <div aria-live="polite" style={{ marginTop: 10 }}>
                 {status === "success" && (
-                  <span style={{ color: "#FC7000" }}>{message}</span>
+                  <span style={{ color: "#13c296" }}>{message}</span>
                 )}
                 {status === "error" && (
                   <span style={{ color: "#f87171" }}>{message}</span>
@@ -341,7 +313,8 @@ ${data.details}`;
       {/* MAP */}
       <div className={styles.mapWrap}>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3171.916386397789!2d77.21781207495324!3d28.537260688401712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce53e587bc4a3%3A0x292fd524976d0909!2sTeacher%20Cool!5e1!3m2!1sen!2sin!4v1755673093255!5m2!1sen!2sin"
+          // ✅ Fix: use a stable embed without the broken pb param
+          src="https://www.google.com/maps?q=28.537260688401712,77.21781207495324&z=14&hl=en&output=embed"
           loading="lazy"
           allowFullScreen
           referrerPolicy="no-referrer-when-downgrade"

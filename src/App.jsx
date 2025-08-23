@@ -22,6 +22,7 @@ import ServicesSelectRestriction from "./BookChef/components/ServicesSelectRestr
 import ServicesSummary from "./BookChef/components/ServicesSummary";
 import Footer from "./FooterComponents/Footer";
 import Navigation from "./Components/Navigation";
+import Thanks from "./ContactUS/Thanks/Thanks";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
           element={<ServicesSelectRestriction />}
         />
         <Route path="/summary" element={<ServicesSummary />} />
+        <Route path="/thanks" element={<Thanks />} />
       </Routes>
       <Footer />
     </Router>

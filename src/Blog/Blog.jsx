@@ -3,35 +3,35 @@ import { Link } from "react-router-dom";
 import styles from "./Blog.module.css";
 import Hero from "../ServicePage/Hero/Hero";
 import heroImg from "../assets/dinner.jpg";
+import image1 from "../assets/PR2.jpeg";
+import imag2 from "../assets/10.png";
+import imag3 from "../assets/dinner.jpg";
 
 const blogPosts = [
   {
     id: 1,
-    title: "How I’m Styling Everyday Black Outfits",
+    title: "Top Benefits of Hiring a Private Chef for Your Events in India",
     excerpt:
-      "It’s no secret that the digital industry is booming. From exciting startups to global brands.",
-    image:
-      "https://th.bing.com/th/id/OIP.TguP8o6yUuYebHodW7fOtgHaE7?w=1200&h=800&rs=1&pid=ImgDetMain",
+      "Organizing an event, whether it’s a wedding, birthday party, corporate gathering, or intimate dinner, can be a stressful affair.",
+    image: image1,
     author: "Mitwa Dadkan",
     date: { day: "26", month: "Oct", year: "2016" },
   },
   {
     id: 2,
-    title: "Fashion Essentials All Men Should Know",
+    title: "How to Choose the Perfect Chef for Your Indian Event",
     excerpt:
-      "More off this less hello salamander lied porpoise much over tightly circa horse taped.",
-    image:
-      "https://th.bing.com/th/id/OIP.lMxykQOXFwV4r8yM4s7ckwHaE8?rs=1&pid=ImgDetMain",
+      "When planning an event in India, whether it’s a wedding, birthday party, corporate gathering, or festive celebration, ",
+    image: imag2,
     author: "Mahvus Georgia",
     date: { day: "26", month: "Oct", year: "2016" },
   },
   {
     id: 3,
-    title: "Not Your Regular Home Decoration?",
+    title: "Top 10 Benefits of Hiring a Private Chef for Your Indian Events",
     excerpt:
-      "Uma molestie at eleme ntum eu facilisis sed odio. Male suada fames.",
-    image:
-      "https://th.bing.com/th/id/OIP.9L30RZhF7tCvo3m-PzSp4wHaE8?rs=1&pid=ImgDetMain",
+      "When planning an event in India, food is not just a necessity—it is the centerpiece that defines the entire experience.",
+    image: imag3,
     author: "Alex Hales",
     date: { day: "29", month: "Feb", year: "2018" },
   },

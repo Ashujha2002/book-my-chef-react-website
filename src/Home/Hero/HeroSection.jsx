@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import styles from "./HeroSection.module.css";
 
@@ -78,14 +79,18 @@ function HeroSection() {
 
       {/* Overlay text & button */}
       <div className={styles.overlay}>
-        <h3 className={styles.heroText}>Delightful experience</h3>
+        <h3 className={styles.heroText}>
+          Delightful Experiences, Anytime, Anywhere
+        </h3>
         <img src={deco} alt="decorative" />
-        <h1 className={styles.heroText1}>Welcome to Chef’s Choice Menu</h1>
+        <h1 className={styles.heroText1}>Welcome to Chef Choice Menu</h1>
         <p className={styles.heroText2}>
           Discover the finest dishes crafted with love
         </p>
         <img src={deco2} alt="decorative" />
-        <button className={styles.button}>Explore Menu</button>
+        <Link to="/book-chef">
+          <button className={styles.button}>Book Your Chef</button>
+        </Link>
       </div>
     </div>
   );

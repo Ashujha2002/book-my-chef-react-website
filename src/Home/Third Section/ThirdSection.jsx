@@ -59,22 +59,22 @@ const ThirdSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
+                {/* <img
                   src={playStore}
                   className={style.arrImg}
                   alt="Go to Example"
-                />
+                /> */}
               </a>
               <a
                 href="https://example.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
+                {/* <img
                   src={appStore}
                   className={style.arrImg}
                   alt="Go to Example"
-                />
+                /> */}
               </a>
             </div>
           </div>

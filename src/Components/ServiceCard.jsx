@@ -22,8 +22,8 @@ const ServiceCard = ({ img1, img2, Head, imag3, para, imag4 }) => {
             </div>
             <p>{para}</p>
             <div className={style.five}>
-              <img src={imag4} alt="" />
-              <p>Read More</p>
+              {/* <img src={imag4} alt="" />
+              <p>Read More</p> */}
             </div>
           </div>
         </div>

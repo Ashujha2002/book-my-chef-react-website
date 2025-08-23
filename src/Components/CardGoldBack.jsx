@@ -1,13 +1,20 @@
 import styles from "./CardGoldBack.module.css";
-const CardGoldBack = ({ img, margin }) => {
+
+const CardGoldBack = ({ img, margin, title }) => {
   return (
-    <div className={styles.card} style={{ margin: margin }}>
-      {/* <div
-              className={styles.bg}
-              style={{ backgroundImage: `url(${cardBg})` }}
-            ></div> */}
-      <img src={img} alt="Card 1" />
+    <div style={{ margin: margin }} className={styles.wrapper}>
+      {/* card */}
+      <div className={styles.card}>
+        <img src={img} alt={title} />
+      </div>
+
+      {/* text */}
+      <h3 className={styles.caption}>{title}</h3>
+
+      {/* double line */}
+      <div className={styles.doubleLine}></div>
     </div>
   );
 };
+
 export default CardGoldBack;
