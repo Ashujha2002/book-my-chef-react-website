@@ -1,18 +1,11 @@
 import Container from "./Container";
 import FormNavigate from "./FormNavigate";
-import { useStore } from "../../store";
+import { useStore } from "../../useStore";
 import { useState, useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 function ServicesSchedule() {
-  const { userInputData } = useStore();
-  const [userSchedule, setUserSchedule] = useState({
-    date: [],
-    breakfast: true,
-    lunch: true,
-    dinner: true,
-    eveningSnacks: true,
-    addtionalNote: "",
-  });
+  const { addUserInputData, userInputData } = useStore();
 
   const serviceScheduledata = {
     title: "We want to schedule my services for...",
@@ -20,6 +13,9 @@ function ServicesSchedule() {
       "Uncheck the meals you don't need. Swipe down the calendar to see all the dates. 😉",
   };
 
+  const [schedule, setSchedule] = useState([]);
+
+  // Format date
   function formatDate(date) {
     if (!date) return "";
     return Intl.DateTimeFormat("en-GB", {
@@ -29,6 +25,7 @@ function ServicesSchedule() {
     }).format(date);
   }
 
+  // Load schedule from previous selection or create new
   useEffect(() => {
     const startDate = userInputData.find((item) => item.id === "date-select")
       ?.data.startDate;
@@ -40,18 +37,57 @@ function ServicesSchedule() {
     const start = new Date(startDate);
     const end = new Date(endDate);
     const datesArray = [];
-
     let current = new Date(start);
     while (current <= end) {
       datesArray.push(formatDate(current));
       current.setDate(current.getDate() + 1);
     }
 
-    setUserSchedule((prev) => ({
-      ...prev,
-      date: datesArray,
-    }));
+    // Check if there is already saved schedule
+    const savedSchedule = userInputData.find(
+      (item) => item.id === "services-schedule"
+    )?.data;
+
+    if (savedSchedule && savedSchedule.length === datesArray.length) {
+      setSchedule(savedSchedule);
+    } else {
+      // Initialize schedule
+      const newSchedule = datesArray.map((date) => ({
+        date,
+        breakfast: true,
+        lunch: true,
+        dinner: true,
+        eveningSnacks: true,
+        additionalNote: "",
+      }));
+      setSchedule(newSchedule);
+    }
   }, [userInputData]);
+
+  const handleCheckboxChange = (index, meal) => {
+    setSchedule((prev) =>
+      prev.map((item, idx) =>
+        idx === index ? { ...item, [meal]: !item[meal] } : item
+      )
+    );
+  };
+
+  const handleNoteChange = (index, value) => {
+    setSchedule((prev) =>
+      prev.map((item, idx) =>
+        idx === index ? { ...item, additionalNote: value } : item
+      )
+    );
+  };
+
+  const onNextBtnClick = () => {
+    if (!schedule || schedule.length === 0) {
+      toast("No schedule selected!");
+      return false;
+    }
+    addUserInputData({ id: "services-schedule", data: schedule });
+    return true;
+  };
 
   return (
     <Container>
@@ -74,43 +110,49 @@ function ServicesSchedule() {
             </tr>
           </thead>
           <tbody>
-            {/* Map over all generated dates */}
-            {userSchedule.date.map((dateItem, index) => (
+            {schedule.map((item, index) => (
               <tr key={index}>
-                <td className="p-2 border">{dateItem}</td>
+                <td className="p-2 border">{item.date}</td>
                 <td className="p-2 border">
                   <input
                     type="checkbox"
-                    defaultChecked
+                    checked={item.breakfast}
+                    onChange={() => handleCheckboxChange(index, "breakfast")}
                     className="w-6 h-6 accent-orange-500 cursor-pointer"
                   />
                 </td>
                 <td className="p-2 border">
                   <input
                     type="checkbox"
-                    defaultChecked
+                    checked={item.lunch}
+                    onChange={() => handleCheckboxChange(index, "lunch")}
                     className="w-6 h-6 accent-orange-500 cursor-pointer"
                   />
                 </td>
                 <td className="p-2 border">
                   <input
                     type="checkbox"
-                    defaultChecked
+                    checked={item.dinner}
+                    onChange={() => handleCheckboxChange(index, "dinner")}
                     className="w-6 h-6 accent-orange-500 cursor-pointer"
                   />
                 </td>
                 <td className="p-2 border">
                   <input
                     type="checkbox"
-                    defaultChecked
+                    checked={item.eveningSnacks}
+                    onChange={() =>
+                      handleCheckboxChange(index, "eveningSnacks")
+                    }
                     className="w-6 h-6 accent-orange-500 cursor-pointer"
                   />
                 </td>
-
                 <td className="p-2 border">
                   <input
                     type="text"
                     placeholder="Add notes..."
+                    value={item.additionalNote}
+                    onChange={(e) => handleNoteChange(index, e.target.value)}
                     className="border rounded p-1 w-full"
                   />
                 </td>
@@ -136,11 +178,13 @@ function ServicesSchedule() {
           bgColor="bg-green-500"
           hoverColor="hover:bg-green-400"
           navigateTo="/people"
+          handleBtnClick={onNextBtnClick}
           navigationDisabled={false}
         >
           Next
         </FormNavigate>
       </div>
+      <ToastContainer />
     </Container>
   );
 }

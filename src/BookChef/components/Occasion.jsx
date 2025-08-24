@@ -1,6 +1,6 @@
 import Container from "./Container";
 import { useState, useEffect } from "react";
-import { useStore } from "../../store";
+import { useStore } from "../../useStore";
 import { ToastContainer, toast } from "react-toastify";
 import FormNavigate from "./FormNavigate";
 
@@ -40,16 +40,25 @@ function Occasion() {
   };
 
   useEffect(() => {
+    // Get the previously selected service type
     const serviceData = userInputData.find(
       (item) => item.id === "service-select"
     );
     if (serviceData) {
       setServiceType(serviceData.data);
+    }
 
+    // Get previously selected occasion
+    const occasionData = userInputData.find((item) => item.id === "occasion");
+    if (occasionData) {
       setOccasionState((prev) =>
         prev.map((service) => ({
           ...service,
-          options: service.options.map((opt) => ({ ...opt, isActiv: false })),
+          options: service.options.map((opt) => ({
+            ...opt,
+            isActiv:
+              opt.text === occasionData.data || opt.text === occasionData.text,
+          })),
         }))
       );
     }
@@ -59,7 +68,6 @@ function Occasion() {
     setOccasionState((prev) =>
       prev.map((service, sIndex) => {
         if (sIndex !== occasionIndex) return service;
-
         return {
           ...service,
           options: service.options.map((opt) =>
@@ -73,28 +81,17 @@ function Occasion() {
   }
 
   function handleOccasionBtnClick() {
-    if (ServiceType === "Single Services") {
-      const userSelectedData = OccasionState[0].options.find(
-        (occasion) => occasion.isActiv === true
-      );
-      if (userSelectedData) {
-        addUserInputData({ id: "occasion", data: userSelectedData?.text });
-        return true;
-      } else {
-        toast("Select an occasion!");
-        return false;
-      }
+    const selectedServiceIndex = ServiceType === "Single Services" ? 0 : 1;
+    const userSelectedData = OccasionState[selectedServiceIndex].options.find(
+      (opt) => opt.isActiv
+    );
+
+    if (userSelectedData) {
+      addUserInputData({ id: "occasion", data: userSelectedData.text });
+      return true;
     } else {
-      const userSelectedData = OccasionState[1].options.find(
-        (occasion) => occasion.isActiv === true
-      );
-      if (userSelectedData) {
-        addUserInputData({ id: "occasion", text: userSelectedData?.text });
-        return true;
-      } else {
-        toast("Select an occasion!");
-        return false;
-      }
+      toast("Select an occasion!");
+      return false;
     }
   }
 
@@ -108,48 +105,30 @@ function Occasion() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
-        {/* Single Service */}
-        {ServiceType === OccasionState[0].service_type &&
-          OccasionState[0].options.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => handleOccasionClick(item.id, 0)}
-              className={`flex justify-between border rounded-md p-2 cursor-pointer ${
-                item.isActiv ? "bg-orange-500 text-white" : "border-white"
-              }`}
-            >
-              <p>{item.text}</p>
-              <input
-                className="accent-black"
-                type="radio"
-                name="occasion"
-                readOnly
-                checked={item.isActiv}
-              />
-            </div>
-          ))}
-
-        {/* Multiple Service */}
-        {ServiceType === OccasionState[1].service_type &&
-          OccasionState[1].options.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => handleOccasionClick(item.id, 1)}
-              className={`flex justify-between border rounded-md p-2 cursor-pointer ${
-                item.isActiv ? "bg-orange-500 text-white" : "border-white"
-              }`}
-            >
-              <p>{item.text}</p>
-              <input
-                className="accent-black"
-                type="radio"
-                name="occasion"
-                readOnly
-                checked={item.isActiv}
-              />
-            </div>
-          ))}
+        {OccasionState.map((service, index) =>
+          ServiceType === service.service_type
+            ? service.options.map((item) => (
+                <div
+                  key={item.id}
+                  onClick={() => handleOccasionClick(item.id, index)}
+                  className={`flex justify-between border rounded-md p-2 cursor-pointer ${
+                    item.isActiv ? "bg-orange-500 text-white" : "border-white"
+                  }`}
+                >
+                  <p>{item.text}</p>
+                  <input
+                    className="accent-black"
+                    type="radio"
+                    name="occasion"
+                    readOnly
+                    checked={item.isActiv}
+                  />
+                </div>
+              ))
+            : null
+        )}
       </div>
+
       <div className="flex justify-center mt-10 space-x-5">
         <FormNavigate
           bgColor="bg-red-500"

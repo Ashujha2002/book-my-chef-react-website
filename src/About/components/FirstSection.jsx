@@ -1,10 +1,10 @@
 import styles from "../styles/aboutUs.module.css";
 import decor from "../../assets/preview2.png";
-import Imgdecor1 from "../../assets/06_clean-bar-1.jpg 1.png";
-import Imgdecor2 from "../../assets/22_team-3-1-1.jpg 1.png";
-import HexagonSvg from "../../assets/hexagon 1.svg";
-import ImgdecorTopRight from "../../assets/08_bg-11 1.png";
-import ImgdecorBottomLeft from "../../assets/Frame 1.png";
+import Imgdecor1 from "../../assets/06.png";
+import Imgdecor2 from "../../assets/563251.png";
+import HexagonSvg from "../../assets/hexagon1.svg";
+import ImgdecorTopRight from "../../assets/08.png";
+import ImgdecorBottomLeft from "../../assets/56325.png";
 
 function FirstSection({ className }) {
   const heading = <p>WHO WE ARE</p>;

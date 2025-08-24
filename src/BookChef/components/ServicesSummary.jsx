@@ -4,7 +4,7 @@ import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import FormNavigate from "./FormNavigate";
 import { toast, ToastContainer } from "react-toastify";
-import { useStore } from "../../store";
+import { useStore } from "../../useStore.js";
 
 function ServicesSummary() {
   const { userInputData, addUserInputData } = useStore();
@@ -27,8 +27,30 @@ function ServicesSummary() {
       [field]: e.target.value,
     }));
   }
-  console.log(userInputData);
-  function onNextBtnClick() {
+
+  function formatSchedule(schedule) {
+    return schedule
+      .map(
+        (item) =>
+          `${item.date} - Breakfast: ${item.breakfast ? "Yes" : "No"}, Lunch: ${
+            item.lunch ? "Yes" : "No"
+          }, Dinner: ${item.dinner ? "Yes" : "No"}, Evening Snacks: ${
+            item.eveningSnacks ? "Yes" : "No"
+          }, Notes: ${item.additionalNote || ""}`
+      )
+      .join("<br>");
+  }
+
+  function formatPeople(people) {
+    return people.map((p) => `${p.category}: ${p.count}`).join("<br>");
+  }
+
+  function formatRestricted(restricted) {
+    if (!restricted || !restricted.length) return "None";
+    return restricted.map((r) => `${r.label}: ${r.value}`).join("<br>");
+  }
+
+  async function onNextBtnClick() {
     if (
       summaryData.name &&
       summaryData.email &&
@@ -41,16 +63,80 @@ function ServicesSummary() {
           data: { ...summaryData },
         });
       }
-      setSummaryData(() => ({
-        name: "",
-        email: "",
-        phno: "",
-        how_you_hear_us: "",
-      }));
-      toast("Successfully submitted!");
+
+      // Prepare HTML table
+      const htmlTable = `
+        <h2>New Booking Request</h2>
+        <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+          <thead>
+            <tr style="background-color: #FC7000; color: white;">
+              <th>Field</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${userInputData
+              .map((item) => {
+                let value = "";
+                if (item.id === "services-schedule") {
+                  value = formatSchedule(item.data);
+                } else if (item.id === "service-people") {
+                  value = formatPeople(item.data);
+                } else if (item.id === "services-restricted") {
+                  value = formatRestricted(item.data);
+                } else if (typeof item.data === "object") {
+                  value = JSON.stringify(item.data);
+                } else {
+                  value = item.data;
+                }
+                return `<tr><td><strong>${item.id}</strong></td><td>${value}</td></tr>`;
+              })
+              .join("")}
+          </tbody>
+        </table>
+        <p>Submitted: ${new Date().toLocaleString("en-GB", {
+          hour12: true,
+        })}</p>
+      `;
+
+      try {
+        await fetch("https://formspree.io/f/mpwlveen", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: summaryData.name,
+            email: summaryData.email,
+            _replyto: summaryData.email,
+            html: htmlTable,
+          }),
+        });
+
+        toast.success("Form submitted! Check your email.", {
+          position: "top-right",
+          autoClose: 5000,
+        });
+
+        // Reset form
+        setSummaryData({
+          name: "",
+          email: "",
+          phno: "",
+          how_you_hear_us: "",
+        });
+      } catch (err) {
+        toast.error("Error submitting form. Try again later.", {
+          position: "top-right",
+        });
+        console.error(err);
+      }
+
       return true;
     } else {
-      toast("Fill all the required fields!");
+      toast.warning("Fill all the required fields!", {
+        position: "top-right",
+      });
       return false;
     }
   }

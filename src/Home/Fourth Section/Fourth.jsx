@@ -1,6 +1,6 @@
 import style from "./Fourth.module.css";
 import deco from "../../assets/preview2.png";
-import deco2 from "../../assets/22.png";
+import deco2 from "../../assets/56325.png";
 import barTenders from "../../assets/Bartenders.png";
 import wait from "../../assets/Waiters.png";
 import clean from "../../assets/clean.png";

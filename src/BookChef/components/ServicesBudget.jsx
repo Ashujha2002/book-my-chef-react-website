@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoMdRadioButtonOn, IoMdRadioButtonOff } from "react-icons/io";
 import Container from "./Container";
 import FormNavigate from "./FormNavigate";
-import { useStore } from "../../store";
+import { useStore } from "../../useStore";
 import { ToastContainer, toast } from "react-toastify";
 
 function ServicesBudget() {
@@ -27,6 +27,7 @@ function ServicesBudget() {
       subText: "You will receive the quotation on your email",
     },
   ]);
+
   const servicesbudgetdata = {
     title: "What's your budget for this experience ?",
     ImpPoints: [
@@ -35,6 +36,21 @@ function ServicesBudget() {
       "Each meal starting at ₹3,367 per person.",
     ],
   };
+
+  // Restore previous selection from userInputData
+  useEffect(() => {
+    const prevBudget = userInputData.find(
+      (item) => item.id === "service-budget"
+    );
+    if (prevBudget) {
+      setBudgetSelect((prev) =>
+        prev.map((budget) => ({
+          ...budget,
+          isActiv: budget.title === prevBudget.data.title,
+        }))
+      );
+    }
+  }, [userInputData]);
 
   function handleBudgetClick(title) {
     setBudgetSelect((prev) =>
@@ -47,20 +63,16 @@ function ServicesBudget() {
   }
 
   function onNextBtnClick() {
-    const budgetData = userInputData.find(
-      (item) => item.id === "service-budget"
-    );
     const selectedBudgetPackage = budgetSelect.find((budget) => budget.isActiv);
-    if (!budgetData)
-      addUserInputData({ id: "service-budget", data: selectedBudgetPackage });
-    if (selectedBudgetPackage) {
-      return true;
-    } else {
+    if (!selectedBudgetPackage) {
       toast("Select package!");
       return false;
     }
+
+    addUserInputData({ id: "service-budget", data: selectedBudgetPackage });
+    return true;
   }
-  console.log(userInputData);
+
   return (
     <Container>
       <div>
@@ -73,7 +85,12 @@ function ServicesBudget() {
           <div
             key={index}
             onClick={() => handleBudgetClick(budget.title)}
-            className="border w-4/5 mx-auto md:mx-2 cursor-pointer md:h-44 p-2 rounded"
+            className={`border w-4/5 mx-auto md:mx-2 cursor-pointer md:h-44 p-2 rounded`}
+            style={{
+              backgroundColor: budget.isActiv ? "#FC7000" : "transparent",
+              color: budget.isActiv ? "black" : "inherit",
+              borderColor: budget.isActiv ? "#FC7000" : "#E5E7EB",
+            }}
           >
             <div className="flex justify-between">
               <p className="font-bold text-xl my-2">{budget.title}</p>

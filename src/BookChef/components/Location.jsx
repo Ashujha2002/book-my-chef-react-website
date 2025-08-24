@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { BiNavigation } from "react-icons/bi";
 import Container from "./Container";
 import FormNavigate from "./FormNavigate";
-import { useStore } from "../../store";
+import { useStore } from "../../useStore.js";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 function Location() {
-  const { addUserInputData } = useStore();
+  const { addUserInputData, userInputData } = useStore();
   const [isLoading, setIsLoading] = useState(false);
   const [userLocation, setUserLocation] = useState({
     lat: null,
@@ -19,6 +19,14 @@ function Location() {
     title: "Where is the event ?",
     text: "Please ensure the accurate location is shared by you.",
   };
+
+  // Restore previously selected location from store
+  useEffect(() => {
+    const savedLocation = userInputData.find((item) => item.id === "location");
+    if (savedLocation) {
+      setUserLocation((prev) => ({ ...prev, addr: savedLocation.data }));
+    }
+  }, [userInputData]);
 
   function getUserLocation(e) {
     setUserLocation((prev) => ({
@@ -37,10 +45,12 @@ function Location() {
           const response = await fetch(url);
           const data = await response.json();
 
-          setUserLocation((prev) => ({
-            ...prev,
-            addr: data.display_name || prev.addr,
-          }));
+          setUserLocation((prev) => {
+            const updated = { ...prev, addr: data.display_name || prev.addr };
+            // Save fetched location immediately to store
+            addUserInputData({ id: "location", data: updated.addr });
+            return updated;
+          });
         } catch (err) {
           console.error("Error fetching location:", err);
         } finally {

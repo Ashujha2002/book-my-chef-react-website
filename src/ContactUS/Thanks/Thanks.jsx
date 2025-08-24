@@ -8,8 +8,9 @@ export default function Thanks() {
       <div className={styles.container}>
         <h1 className={styles.title}>🎉 Thank You!</h1>
         <p className={styles.message}>
-          Your message has been successfully sent. I’ll get back to you as soon
-          as possible.
+          Thank you for reaching out! Your message has been received, and our
+          culinary team is already preparing a delicious response. We’ll get
+          back to you shortly to make your experience truly flavorful
         </p>
         <Link to="/" className={styles.homeBtn}>
           ⬅ Back to Home

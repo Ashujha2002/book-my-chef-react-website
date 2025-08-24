@@ -1,80 +1,57 @@
 import Container from "./Container";
 import { IoMdRadioButtonOn, IoMdRadioButtonOff } from "react-icons/io";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FormNavigate from "./FormNavigate";
-import { useStore } from "../../store";
+import { useStore } from "../../useStore.js";
 import { toast, ToastContainer } from "react-toastify";
 
 function Place() {
   const { addUserInputData, userInputData } = useStore();
+
   const [OptionPlace, setOptionPlace] = useState([
-    {
-      id: 1,
-      title: "Garden",
-      setActiv: false,
-    },
-    {
-      id: 2,
-      title: "Banquet",
-      setActiv: false,
-    },
-    {
-      id: 3,
-      title: "Farm House",
-      setActiv: false,
-    },
-    {
-      id: 4,
-      title: "Beach",
-      setActiv: false,
-    },
-    {
-      id: 5,
-      title: "Resort",
-      setActiv: false,
-    },
-    {
-      id: 6,
-      title: "Terrace",
-      setActiv: false,
-    },
-    {
-      id: 7,
-      title: "Other",
-      setActiv: false,
-    },
+    { id: 1, title: "Garden", setActiv: false },
+    { id: 2, title: "Banquet", setActiv: false },
+    { id: 3, title: "Farm House", setActiv: false },
+    { id: 4, title: "Beach", setActiv: false },
+    { id: 5, title: "Resort", setActiv: false },
+    { id: 6, title: "Terrace", setActiv: false },
+    { id: 7, title: "Other", setActiv: false },
   ]);
 
   const placedata = {
     title: "Select a place for the chef to cook",
   };
 
+  // Restore previously selected place
+  useEffect(() => {
+    const selectedPlace = userInputData.find((item) => item.id === "place");
+    if (selectedPlace) {
+      setOptionPlace((prev) =>
+        prev.map((place) => ({
+          ...place,
+          setActiv: place.title === selectedPlace.data,
+        }))
+      );
+    }
+  }, [userInputData]);
+
   function handleOptionClick(id) {
     setOptionPlace((prev) =>
-      prev.map((place) => {
-        if (place.id !== id)
-          return {
-            ...place,
-            setActiv: false,
-          };
-
-        return {
-          ...place,
-          setActiv: true,
-        };
-      })
+      prev.map((place) => ({
+        ...place,
+        setActiv: place.id === id,
+      }))
     );
   }
 
   function onNextBtnClick() {
-    const userPlaceInput = userInputData.find((place) => place.setActiv);
-    if (!userPlaceInput) {
-      addUserInputData({ id: "place", data: userPlaceInput?.title });
-      return true;
-    } else {
+    const selectedPlace = OptionPlace.find((place) => place.setActiv);
+    if (!selectedPlace) {
       toast("Select a Place!");
       return false;
     }
+    addUserInputData({ id: "place", data: selectedPlace.title });
+    return true;
   }
 
   return (
@@ -83,7 +60,7 @@ function Place() {
         <p className="text-center font-bold text-xl my-5">{placedata.title}</p>
       </div>
       <div className="grid md:grid-cols-2 md:grid-rows-4 space-y-2 w-2/5 mx-auto">
-        {OptionPlace?.map((item) => (
+        {OptionPlace.map((item) => (
           <div
             className="flex cursor-pointer items-center m-2 space-x-2"
             onClick={() => handleOptionClick(item.id)}

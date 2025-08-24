@@ -2,7 +2,7 @@ import { useState } from "react";
 import Container from "./Container";
 import FormNavigate from "./FormNavigate";
 import { ToastContainer, toast } from "react-toastify";
-import { useStore } from "../../store";
+import { useStore } from "../../useStore";
 
 function ServicesSelectRestriction() {
   const { addUserInputData, userInputData } = useStore();

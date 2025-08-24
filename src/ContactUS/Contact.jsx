@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ for navigation
 import styles from "./Contact.module.css";
 
 function InfoItem({ title, children, icon }) {
@@ -43,17 +44,19 @@ function ContactTextArea({ name, placeholder, value, onChange }) {
   );
 }
 
-// ✅ Hardcode your Formspree ID so the form "just works"
+// ✅ Formspree ID
 const FORMSPREE_ID = "xldlywdl";
 
 export default function Contact() {
+  const navigate = useNavigate();
+
   const [data, setData] = useState({
     name: "",
     email: "",
     phone: "",
     details: "",
   });
-  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+  const [status, setStatus] = useState("idle");
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
@@ -87,21 +90,17 @@ export default function Contact() {
         name: data.name,
         email: data.email,
         phone: data.phone,
-        message: data.details, // Formspree "message" field
+        message: data.details,
       });
       setStatus("success");
       setMessage("Thanks! Your message has been sent.");
       setData({ name: "", email: "", phone: "", details: "" });
-      navigate("/thanks");
+
+      // ✅ Redirect to thanks page after 1 second
+      setTimeout(() => navigate("/thanks"), 1000);
     } catch (err) {
       setStatus("error");
       setMessage(err.message || "Something went wrong. Please try again.");
-    } finally {
-      // keep your original behavior
-      setTimeout(() => {
-        if (status === "success") return;
-        setStatus("idle");
-      }, 0);
     }
   };
 
@@ -118,6 +117,7 @@ export default function Contact() {
             minim veniam quis nostrud exercitation ullamco
           </p>
 
+          {/* Info Items with SVG icons */}
           <InfoItem
             title="Our Location"
             icon={
@@ -157,10 +157,6 @@ export default function Contact() {
                     d="M29.3 14.25C28.7 14.25 28.25 13.8 28.2 13.2C27.8 8.15003 23.65 4.10003 18.55 3.75003C17.95 3.70003 17.45 3.20003 17.5 2.55003C17.55 1.95003 18.05 1.45003 18.7 1.50003C24.9 1.90003 29.95 6.80003 30.45 13C30.5 13.6 30.05 14.15 29.4 14.2C29.4 14.25 29.35 14.25 29.3 14.25Z"
                     fill="currentColor"
                   />
-                  <path
-                    d="M24.35 14.7002C23.8 14.7002 23.3 14.3002 23.25 13.7002C22.95 11.0002 20.85 8.90018 18.15 8.55018C17.55 8.50018 17.1 7.90018 17.15 7.30018C17.2 6.70018 17.8 6.25018 18.4 6.30018C22.15 6.75018 25.05 9.65018 25.5 13.4002C25.55 14.0002 25.15 14.5502 24.5 14.6502C24.4 14.7002 24.35 14.7002 24.35 14.7002Z"
-                    fill="currentColor"
-                  />
                 </g>
                 <defs>
                   <clipPath id="clip0">
@@ -193,10 +189,9 @@ export default function Contact() {
           </InfoItem>
         </div>
 
-        {/* RIGHT: form card with background decorations */}
+        {/* RIGHT: form card with decorations */}
         <div className={styles.rightCol}>
           <div className={styles.formCard}>
-            {/* Decorative shapes (behind card) */}
             <span className={styles.shapeQuarter}>
               <svg width="100" height="100" viewBox="0 0 100 100">
                 <path
@@ -288,6 +283,7 @@ export default function Contact() {
                 value={data.details}
                 onChange={handleChange}
               />
+
               <button
                 type="submit"
                 className={styles.submitBtn}
@@ -313,7 +309,6 @@ export default function Contact() {
       {/* MAP */}
       <div className={styles.mapWrap}>
         <iframe
-          // ✅ Fix: use a stable embed without the broken pb param
           src="https://www.google.com/maps?q=28.537260688401712,77.21781207495324&z=14&hl=en&output=embed"
           loading="lazy"
           allowFullScreen

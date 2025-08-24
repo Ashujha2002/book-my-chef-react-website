@@ -1,22 +1,35 @@
 import DatePicker from "react-datepicker";
-import { useState, forwardRef } from "react";
+import { useState, useEffect, forwardRef } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import Container from "./Container";
 import FormNavigate from "./FormNavigate";
 import { ToastContainer, toast } from "react-toastify";
-import { useStore } from "../../store";
+import { useStore } from "../../useStore";
 
 function DateSelector() {
   const { addUserInputData, userInputData } = useStore();
-  const dateSelectorDate = {
-    title: "When is the event ?",
-  };
+  const dateSelectorDate = { title: "When is the event ?" };
+
   const [InputDate, setInputDate] = useState({
     startDate: null,
     endDate: null,
     formattedStartDate: "",
     formattedEndDate: "",
   });
+
+  // Restore previously selected date from store
+  useEffect(() => {
+    const savedDate = userInputData.find((item) => item.id === "date-select");
+    if (savedDate) {
+      const { startDate, endDate } = savedDate.data;
+      setInputDate({
+        startDate: startDate ? new Date(startDate) : null,
+        endDate: endDate ? new Date(endDate) : null,
+        formattedStartDate: startDate ? formatDate(new Date(startDate)) : "",
+        formattedEndDate: endDate ? formatDate(new Date(endDate)) : "",
+      });
+    }
+  }, [userInputData]);
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
     <input
@@ -49,19 +62,14 @@ function DateSelector() {
   }
 
   function onNextBtnClick() {
-    if (
-      InputDate.formattedStartDate.length > 0 &&
-      InputDate.formattedEndDate.length > 0
-    ) {
-      // add data to the addUserInputData array of zustand
-      if (userInputData.find((item) => item.id !== "date-select"))
-        addUserInputData({
-          id: "date-select",
-          data: {
-            startDate: InputDate.startDate,
-            endDate: InputDate.endDate,
-          },
-        });
+    if (InputDate.startDate && InputDate.endDate) {
+      addUserInputData({
+        id: "date-select",
+        data: {
+          startDate: InputDate.startDate,
+          endDate: InputDate.endDate,
+        },
+      });
       return true;
     } else {
       toast("Select a date!");

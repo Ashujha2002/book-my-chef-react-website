@@ -1,15 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Container from "./Container";
 import FormNavigate from "./FormNavigate";
-import { useStore } from "../../store";
+import { useStore } from "../../useStore.js";
 import { ToastContainer, toast } from "react-toastify";
 
 function ServicesSelect() {
-  const { addUserInputData } = useStore();
+  const { addUserInputData, userInputData, clearUserInputData } = useStore();
+
+  // Reset session data at the start of booking
+  useEffect(() => {
+    clearUserInputData();
+  }, []);
+
   const [cardActiv, setCardActiv] = useState([
     { id: "service-opt-1", state: false },
     { id: "service-opt-2", state: false },
   ]);
+
+  // Restore selection from store if exists
+  useEffect(() => {
+    const serviceData = userInputData.find(
+      (item) => item.id === "service-select"
+    );
+    if (serviceData) {
+      setCardActiv((prev) =>
+        prev.map((card) => ({
+          ...card,
+          state:
+            serviceData.data === "Single Services" &&
+            card.id === "service-opt-1"
+              ? true
+              : serviceData.data === "Multiple Services" &&
+                card.id === "service-opt-2"
+              ? true
+              : false,
+        }))
+      );
+    }
+  }, [userInputData]);
+
   const serviceSelectData = {
     title: "Please specify the type of service you need",
     text: "Define your event to see availability of chefs, menus and prices accordingly. This will take less than 2 minutes to complete!",
@@ -28,11 +57,11 @@ function ServicesSelect() {
   };
 
   function handleOptionClicked(cardId) {
-    setCardActiv((prevState) =>
-      prevState.map((prevStateItem) =>
-        prevStateItem.id === cardId
-          ? { ...prevStateItem, state: true }
-          : { ...prevStateItem, state: false }
+    setCardActiv((prev) =>
+      prev.map((card) =>
+        card.id === cardId
+          ? { ...card, state: true }
+          : { ...card, state: false }
       )
     );
   }
@@ -42,23 +71,19 @@ function ServicesSelect() {
   }
 
   function handleCheckUserInput() {
-    if (cardActiv[0].state === false && cardActiv[1].state === false) {
+    const selectedCard = cardActiv.find((card) => card.state);
+    if (!selectedCard) {
       toast("Select a service!");
       return false;
-    } else {
-      cardActiv.forEach(
-        (item) =>
-          item.state &&
-          addUserInputData({
-            id: "service-select",
-            data:
-              item.id === "service-opt-1"
-                ? "Single Services"
-                : "Multiple Services",
-          })
-      );
-      return true;
     }
+    addUserInputData({
+      id: "service-select",
+      data:
+        selectedCard.id === "service-opt-1"
+          ? "Single Services"
+          : "Multiple Services",
+    });
+    return true;
   }
 
   return (
@@ -67,18 +92,19 @@ function ServicesSelect() {
         <p className="text-2xl font-semibold">{serviceSelectData.title}</p>
         <p className="my-2">{serviceSelectData.text}</p>
       </div>
-      <div className="flex-col my-5 flex space-x-0 justify-center items-center space-y-5 md:space-y-0 md:space-x-5 md:flex-row">
+
+      <div className="flex flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-5 justify-center items-center">
         {serviceSelectData.options.map((item) => (
           <div
+            key={item.id}
             onClick={() => handleOptionClicked(item.id)}
             className={`w-9/10 md:w-6/10 cursor-pointer p-4 rounded-md ${
               isActive(item.id)
                 ? "bg-orange-500 text-black"
                 : "border border-white"
             }`}
-            key={item.id}
           >
-            <div className="flex space-y-4 justify-between">
+            <div className="flex justify-between">
               <p className="text-xl font-bold">{item.title}</p>
               <input
                 className="accent-black"
@@ -92,7 +118,8 @@ function ServicesSelect() {
           </div>
         ))}
       </div>
-      <div className="flex justify-center space-x-5">
+
+      <div className="flex justify-center space-x-5 mt-5">
         <FormNavigate
           bgColor="hover:bg-red-600"
           hoverColor="bg-red-500"
